@@ -35,6 +35,18 @@ public partial class MainPage : ContentPage
 
 	private void OnPlus(object sender, EventArgs e)
 	{
+		var counter = (Counter)((Button)sender).BindingContext;
+		counter.Value++;
+	}
+
+	private void OnMinus(object sender, EventArgs e)
+	{
+		var counter = (Counter)((Button)sender).BindingContext;
+		counter.Value--;
+	}
+
+	private async void OnAdd(object sender, EventArgs e)
+	{
 		
 	}
 }
