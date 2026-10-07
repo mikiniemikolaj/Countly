@@ -17,6 +17,7 @@
                                 <Button Text="-" Clicked="OnMinus" />
                                 <Button Grid.Column="1" Text="+" Clicked="OnPlus" />
                             </Grid>
+                            <Button Text="Usuń" BackgroundColor="Red" TextColor="White" Clicked="OnDelete" />
                         </VerticalStackLayout>
                     </Border>
                 </DataTemplate>

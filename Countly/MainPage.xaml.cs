@@ -56,4 +56,10 @@ public partial class MainPage : ContentPage
 
 		counters.Add(new Counter { Name = name, Value = value });
 	}
+
+	private void OnDelete(object sender, EventArgs e)
+	{
+		var counter = (Counter)((Button)sender).BindingContext;
+		counters.Remove(counter);
+	}
 }
