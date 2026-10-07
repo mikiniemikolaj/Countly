@@ -4,25 +4,72 @@
              x:Class="Countly.MainPage"
              Title="Countly">
 
+    <ContentPage.Resources>
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#1E1E1E}" />
+            <Setter Property="Stroke" Value="Transparent" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Margin" Value="0,0,0,14" />
+        </Style>
+        
+        <Style x:Key="NameStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        
+        <Style x:Key="ValueStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="52" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#6C5CE7" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        
+        <Style x:Key="MainButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#6C5CE7" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
+
+        <Style x:Key="MinusButton" TargetType="Button" BasedOn="{StaticResource MainButton}">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#E5E7EB, Dark=#374151}" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light=#111827, Dark=White}" />
+        </Style>
+
+        <Style x:Key="DeleteButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="#EF4444" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </ContentPage.Resources>
+    
     <Grid RowDefinitions="*,Auto" Padding="20" RowSpacing="12">
 
         <CollectionView x:Name="CountersList">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border Padding="16" Margin="0,0,0,12" StrokeShape="RoundRectangle 12">
+                    <Border Style="{StaticResource CardStyle}">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Opacity="0.12" Radius="12" Offset="0,4" />
+                        </Border.Shadow>
                         <VerticalStackLayout Spacing="8">
-                            <Label Text="{Binding Name}" FontSize="20" HorizontalOptions="Center" />
-                            <Label Text="{Binding Value}" FontSize="36" HorizontalOptions="Center" />
+                            <Label Text="{Binding Name}" Style="{StaticResource NameStyle}" />
+                            <Label Text="{Binding Value}" Style="{StaticResource ValueStyle}" />
                             <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                                <Button Text="-" Clicked="OnMinus" />
-                                <Button Grid.Column="1" Text="+" Clicked="OnPlus" />
+                                <Button Text="-" Style="{StaticResource MinusButton}" Clicked="OnMinus" />
+                                <Button Grid.Column="1" Text="+" Style="{StaticResource MainButton}" Clicked="OnPlus" />
                             </Grid>
-                            <Button Text="Usuń" BackgroundColor="Red" TextColor="White" Clicked="OnDelete" />
+                            <Button Text="Usuń" Style="{StaticResource DeleteButton}" Clicked="OnDelete" />
                         </VerticalStackLayout>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Grid.Row="1" Text="Dodaj licznik" Clicked="OnAdd"/>
+
+        <Button Grid.Row="1" Text="+ Dodaj licznik" Style="{StaticResource MainButton}" FontSize="18" Clicked="OnAdd" />
     </Grid>
 </ContentPage>
