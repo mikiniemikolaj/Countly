@@ -22,7 +22,7 @@ public class Counter : INotifyPropertyChanged
 
 public partial class MainPage : ContentPage
 {
-	private ObservableCollection<Counter> counters = new()
+	private readonly ObservableCollection<Counter> counters = new()
 	{
 		new Counter { Name = "Licznik", Value = 0 }
 	};
@@ -33,21 +33,27 @@ public partial class MainPage : ContentPage
 		CountersList.ItemsSource = counters;
 	}
 
-	private void OnPlus(object sender, EventArgs e)
+	private void OnPlus(object? sender, EventArgs e)
 	{
-		var counter = (Counter)((Button)sender).BindingContext;
+		var counter = (Counter)((Button)sender!).BindingContext;
 		counter.Value++;
 	}
 
-	private void OnMinus(object sender, EventArgs e)
+	private void OnMinus(object? sender, EventArgs e)
 	{
-		var counter = (Counter)((Button)sender).BindingContext;
+		var counter = (Counter)((Button)sender!).BindingContext;
 		counter.Value--;
 	}
-
+	
 	private async void OnAdd(object sender, EventArgs e)
 	{
-		
+		string? name = await DisplayPromptAsync("Nowy licznik", "Nazwa:");
+		if (string.IsNullOrWhiteSpace(name)) return;
+
+		string? start = await DisplayPromptAsync("Nowy licznik", "Wartość początkowa:",
+			initialValue: "0", keyboard: Keyboard.Numeric);
+		int.TryParse(start, out int value);
+
+		counters.Add(new Counter { Name = name, Value = value });
 	}
 }
-
