@@ -59,10 +59,10 @@
                         </Border.Shadow>
                         <VerticalStackLayout Spacing="8">
                             <Label Text="{Binding Name}" Style="{StaticResource NameStyle}" />
-                            <Label Text="{Binding Value}" Style="{StaticResource ValueStyle}" />
+                            <Label Text="{Binding Value}" Style="{StaticResource ValueStyle}" TextColor="{Binding AccentColor}" />
                             <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
                                 <Button Text="-" Style="{StaticResource MinusButton}" Clicked="OnMinus" />
-                                <Button Grid.Column="1" Text="+" Style="{StaticResource MainButton}" Clicked="OnPlus" />
+                                <Button Grid.Column="1" Text="+" Style="{StaticResource MainButton}" BackgroundColor="{Binding AccentColor}" Clicked="OnPlus" />
                             </Grid>
                             <Button Text="Usuń" Style="{StaticResource DeleteButton}" Clicked="OnDelete" />
                         </VerticalStackLayout>
