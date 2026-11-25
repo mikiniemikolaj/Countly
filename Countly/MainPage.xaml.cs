@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Countly;
 
-public class Counter : INotifyPropertyChanged
+public class Counter : INotifyPropertyChanged   //przy dodaniu/usunieciu elemntu lista sama sie odsiweza
 {
 	private int _value;
 	public string Name { get; set; } = "";
@@ -44,7 +44,7 @@ public partial class MainPage : ContentPage
 		new("Grafitowy", "#475569")
 	];
 
-	private readonly ObservableCollection<Counter> counters = new();
+	private readonly ObservableCollection<Counter> counters = new(); //przy dodaniu/usunieciu elemntu lista sama sie odsiweza
 	private readonly string filePath = Path.Combine(FileSystem.AppDataDirectory, "counters.xml");
 	
 	public MainPage()

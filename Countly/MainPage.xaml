@@ -51,8 +51,8 @@
     <Grid RowDefinitions="*,Auto" Padding="20" RowSpacing="12">
 
         <CollectionView x:Name="CountersList">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
+            <CollectionView.ItemTemplate> <!-- lista, tyle kart ile licznikow -->
+                <DataTemplate> <!-- wzzor jednej karty powielany dla kazdego liczniak -->
                     <Border Style="{StaticResource CardStyle}">
                         <Border.Shadow>
                             <Shadow Brush="Black" Opacity="0.12" Radius="12" Offset="0,4" />
